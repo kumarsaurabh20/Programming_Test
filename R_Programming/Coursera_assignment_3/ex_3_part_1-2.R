@@ -1,0 +1,35 @@
+outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+ncol(outcome)
+names(outcome)
+
+par(mfrow = c(3,1))
+outcome[,11] <- as.numeric(outcome[,11])
+a <- mean(outcome[,11], 0, TRUE)
+hist(outcome[,11], xlab="30-day Death Rate", ylab="Frequency", main=expression(paste("Heart Attack ", bar(x) , " = ", a)), xlim = range(c(0,15,30)), prob=TRUE)
+x = median(outcome[,11], TRUE)
+abline(v = z, col = "blue", lwd = 2)
+p <- na.omit(outcome[,11])
+o <- density(p, TRUE)
+hist(outcome[,11], xlab="30-day Death Rate", ylab="Frequency", main=expression(paste("Heart Attack ", bar(x) , " = ", a)), xlim = range(c(0,15,30)), prob=TRUE)
+lines(o, lwd=2, col="red")
+
+outcome[,17] <- as.numeric(outcome[,17])
+b <- mean(outcome[,17], 0, TRUE)
+y = median(outcome[,17], TRUE)
+abline(v = z, col = "blue", lwd = 2)
+q <- na.omit(outcome[,17])
+t <- density(q, TRUE)
+hist(outcome[,17], xlab="30-day Death Rate", ylab="Frequency", main=expression(paste("Heart Failure ", bar(x) , " = ", b)), xlim = range(c(0,15,30)), prob=TRUE)
+lines(t, lwd=2, col="red")
+
+
+outcome[,23] <- as.numeric(outcome[,23]) 
+c <- mean(outcome[,23], 0, TRUE)
+z = median(outcome[,23], TRUE)
+abline(v = z, col = "blue", lwd = 2)
+w <- na.omit(outcome[,23])
+r <- density(w, TRUE)
+hist(outcome[,23], xlab="30-day Death Rate", ylab="Frequency", main=expression(paste("Pneumonia ", bar(x) , " = ", c)), xlim = range(c(0,15,30)), prob=TRUE)
+lines(r, lwd=2, col="red")
+
+
