@@ -13,7 +13,7 @@ public class ColumnInfo {
 			
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/microaquadt","root","rock1818");
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/microaquadt","","");
 			
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(str);
