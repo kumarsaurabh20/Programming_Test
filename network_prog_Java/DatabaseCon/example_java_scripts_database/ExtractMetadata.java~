@@ -8,7 +8,7 @@ public class ExtractMetadata {
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/test","","");
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/test","root","rock1818");
 			
 			//Create a database metadata object
 			DatabaseMetaData dbmd = con.getMetaData();

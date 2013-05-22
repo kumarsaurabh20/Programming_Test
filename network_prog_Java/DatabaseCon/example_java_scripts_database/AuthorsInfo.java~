@@ -8,7 +8,7 @@ public class AuthorsInfo {
 		{
 		String str="SELECT * FROM users";
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/test","","");
+		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/microaquadt","","");
 		Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(str);
 		System.out.println("User ID\tname\tEmail\tCreate Date\tUpdate Date");

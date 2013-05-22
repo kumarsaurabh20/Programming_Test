@@ -10,7 +10,7 @@ public class CreateTrans {
 			
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/test", "", "");
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/test", "root", "rock1818");
 			con.setAutoCommit(false);
 			PreparedStatement ps = con.prepareStatement(str);
 			ps.setInt(1, 1008);
