@@ -13,9 +13,13 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
+% X*theta will give a vector of 97*1, form which y values will be subtracted and squared 
 
+for i = 1:m
 
-
+  J = J + 1/(2*m) * (theta'*X(i,:)' - y(i)) ** 2
+  
+end
 
 % =========================================================================
 
