@@ -1,0 +1,9 @@
+*.txt
+*.pdf
+*.csv
+.settings
+.classpath
+.project
+*.class
+bin/
+
