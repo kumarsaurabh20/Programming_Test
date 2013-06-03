@@ -8,7 +8,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-public class ChatClient extends JFrame implements ActionListener {
+public class ChatClient extends JFrame implements ActionListener, ClientRemote {
 	
 	private static final long serialVersionUID = 1L;
 	JTextField str;
@@ -117,7 +117,7 @@ public class ChatClient extends JFrame implements ActionListener {
 	
       public static void main(String args[]) 
       {
-    	  name = args[0];
+    	  name = null;
     	  ChatClient cc = new ChatClient();
     	  cc.setVisible(true);
     	  cc.setTitle(name);
