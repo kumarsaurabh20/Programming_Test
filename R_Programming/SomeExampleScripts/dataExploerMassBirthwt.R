@@ -25,3 +25,32 @@ barplot(relFreq, xlab="Races",ylab="Relative Frequency",main="Relative Frequency
 #=============================================================================
 
 #Visualization of numerical data
+#for numerical data, two most imp things to consider are location and spread. 
+#Dotplots can reveal this info. Central tendency will tell the location of data 
+#and distribution tells about the overall spread
+bwt <- as.numeric(birthwt$bwt)
+hist(bwt)
+hist(birthwt$lwt, main=paste("Histogram of mothers wieght: ", "lwt"),xlab="Mothers weight",ylab="Weight Frequency",col="blue")
+#Histograms are commonly use to visualize numerical variables. A histogram is bargraph 
+#after the values of the variable is grouped(binned) in to a finite no. of intervals(bins).
+#We treat each interval(bin) as category.
+hist(birthwt$lwt, prob=TRUE)
+lines(density(birthwt$lwt), col="red")
+#height of histogram i.e freq can also be changed in to rel freq. but in histogram 
+#instead of rel freq. density of individual graphs is chosen. 
+#{Density=rel. freq/width(bin)} so 
+#area = height * width | Fc*Wc | Pc/Wc * Wc | Area = Pc i.e area = rel. freq.
+#So area of a bar in hist is a rel freq for the corresponding interval.
+hist(birthwt$lwt, prob=TRUE)
+lines(density(birthwt$lwt), col="red")
+#This data set is right skewed i.e lower right tail. Datasets are symmetric if the 
+#densities are almost same for intervals that are equally distant from the location.
+#most of the histograms like this has one peak i.e. one mode or unimodal. 
+#There are situations when we get two peaks that is bimodal histograms. Bimodal appears 
+#to be a combination of two unimodal histograms. It indicates that underlying populations
+#are not homogenous and may contain two or multiple populations.
+
+
+
+
+
