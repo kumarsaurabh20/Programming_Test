@@ -76,8 +76,9 @@ public class ChatServer extends UnicastRemoteObject implements ServerRemote {
 		
 		for(int i=0;i<v.size();i++) {
 			
-			ClientRemote cr1 = (ClientRemote)v.elementAt(i);
-			if(cr1 != null) {cr1.getString(str);}			
+			ClientRemote cr = (ClientRemote)v.elementAt(i);
+			if(cr != null) {cr.getString(str);}	
+			else {System.out.println("Client is not registered!!");}
 		}
 				
 	}

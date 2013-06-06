@@ -66,7 +66,7 @@ public class ChatClient extends JFrame implements ActionListener, ClientRemote {
 		gbc.gridy = 6;
 		getContentPane().add(send,gbc);
 		
-		send.addActionListener((ActionListener) this);
+		send.addActionListener(this);
 		
 		addWindowListener(new WindowAdapter() {
 			
@@ -75,6 +75,7 @@ public class ChatClient extends JFrame implements ActionListener, ClientRemote {
 				try
 				{
 					ser.removeClient(i);
+					System.out.println("Client removed!!");
 				}
 				catch(Exception e) {System.out.println("Error: " + e);}
 				System.exit(0);
@@ -103,7 +104,8 @@ public class ChatClient extends JFrame implements ActionListener, ClientRemote {
     	 
     	 try
     	 {
-    		ser.showText(name + ":" + str.getText()); 
+    	     ser.showText(name + ": " + str.getText());
+    	     getString(name + ": " + str.getText());
     	 }
     	 catch(Exception e) {e.printStackTrace();}
     	 
@@ -117,13 +119,11 @@ public class ChatClient extends JFrame implements ActionListener, ClientRemote {
 	
       public static void main(String args[]) 
       {
-    	  name = null;
+    	  name = args[0];
     	  ChatClient cc = new ChatClient();
+    	  
     	  cc.setVisible(true);
     	  cc.setTitle(name);
-      }
-     
-     
-	
+      }	
 
 }
