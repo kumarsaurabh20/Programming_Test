@@ -103,3 +103,54 @@ boxplot(Pima.tr$bmi, ylab="BMI", horizontal=TRUE)
 IQR(Pima.tr$bmi)
 var(Pima.tr$bmi)
 sd(Pima.tr$bmi)
+
+#Creating categories in Numerical variables
+#The hist() function automatically divides the range of possible values in to several 
+#intervals. Instead, we can create more meaningful intervals(bins) which will be 
+#treated as categories. To create a categorical variable based on bmi variable in 
+#Pima.tr, we can loop through each observation one by one and assign each observation 
+#to one of the four categories: "Underweight","Noral","OverWeight","Obese". But first 
+#we start by creating an empty Vector:
+Pima.tr$weight.status <- rep(NA, 200)
+for(i in 1:200) {
+  if (Pima.tr$bmi[i] < 18.5) {
+    Pima.tr$weight.status[i] <- "Underweight"
+  } else if (Pima.tr$bmi[i] >= 18.5 & Pima.tr$bmi[i] < 24.9) {
+    Pima.tr$weight.status[i] <- "Normal"
+  } else if (Pima.tr$bmi[i] >= 24.9 & Pima.tr$bmi[i] < 29.9) {
+    Pima.tr$weight.status[i] <- "Overweight"
+  } else {
+    Pima.tr$weight.status[i] <- "Obese"
+  }  
+}
+
+#Before we use the newly created variable weight.status in statistical analysis, we should convert its type to factor
+Pima.tr$weight.status <- factor(Pima.tr$weight.status)
+
+#While the above command will convert weight.status in to a factor but it does not take in to account the ordering levels. The leveles are ordered alphabetically and can be examined using the levels() function:
+levels(Pima.tr$weight.status)
+
+#We can also provide the ordering while creating it to a factor
+Pima.tr$weight.status <- factor(Pima.tr$weight.status, levels=c("Underweight","Normal","Overweight","Obese"))
+levels(Pima.tr$weight.status)
+
+#To find the missing values in R we can use is.na() function which is a logical 
+#function returning True or False.
+#While loading Pima.tr2 we can check
+
+data(Pima.tr2)
+is.na(Pima.tr$bp)
+#To obtain the indices of the observations which are missing, we can use the which() 
+#function along with the is.na(). Which can be used to find the indices of "True" 
+#values for a logical vector:
+
+which(is.na(Pima.tr2$bp))
+
+#The complete cases function returns a logical vector indicating which 
+#cases(observations) in the data set are complete i.e have no missing values
+
+complete.cases(Pima.tr2)
+
+#To remove the cases with missing values, we can use na.omit() function
+
+Pima.complete <- na.omit(Pima.tr2)
