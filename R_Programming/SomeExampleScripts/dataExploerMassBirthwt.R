@@ -50,7 +50,56 @@ lines(density(birthwt$lwt), col="red")
 #to be a combination of two unimodal histograms. It indicates that underlying populations
 #are not homogenous and may contain two or multiple populations.
 
+#Sample mean is very useful for summary statistics but it is sensitive to very large or 
+#very small observations which might be outliers. Sample median is less sensitive to 
+#outliers. Mean and median are raerly enough to fully describe a distribution. 
+#Sample variance and sample std. deviation. The sum of deviations of values from the 
+#mean is alwaz zero. While comparing two samples less std. devaition means the sample is 
+#less dispersed as compared to the other sample.
+#The Q quantile is the point that is greater than or equal to atleats 100q% of the values 
+#and smaller than or equal to atleast 100(1-q)% of the values.
+#If the observation is less than Q1-1.5*IQR or greater than Q3+1.5*IQR then that 
+#observation is an outlier. Where IQR is the range or difference of Q3 and Q1.
+#In data preprocessing just check for the missing values and outliers. It is up to the 
+#researcher to decide weather to remove the missing value of impute/guess. Missing data 
+#imputation techniques using statistical methods to fill in missing values tend to be 
+#very complex. However if done properly they can improve the analysis.
+#Data transformation techniques to reduce the influence of extreme values is usually 
+#applied. Two of the most common transformation functions are very common for this 
+#purpose: Logarithm and Square root. Log function is usally used to transform right 
+#skewed variables with positive values. the Sq. root function is used for right skewed 
+#count variables.
+#Mean and std. dev. are usually get affected by change in units or addition or 
+#multiplication of observations with constants. In that case Coefficient of variation 
+#is generally used which is std. dev. divided by sample mean. In general CoV is used to 
+#compare variables in terms of theor dispersion when the means are substantially 
+#different(possibly as result of having different measurement units).
+# when observations are multiplied by any scaler positive constand their original 
+#means get shifted but CoV doesnt change. Howeve if observations are scaled with some 
+#constand and then shifted(addition/subtraction) at the same time, then CoV get affected.
 
-
-
-
+#variable standardization/mean normalization/scaling of features is generally used to 
+#scale our observations to be comapred easily. Doing this will change the mean between 
+#observation to zero and std. dev to one. It is done bt subtracting the observations 
+#with the sample mean and dividing it by sample std. dev.
+library(MASS)
+data(Pima.tr)
+head(Pima.tr)
+help(Pima.tr) # to view if any description on data set is available
+type.freq <- table(Pima.tr$type)
+type.freq
+barplot(type.freq, xlab="Type",ylab="Frequency", main="Frequency bar graph of type")
+n <- sum(type.freq)
+type.rel.freq <- type.freq/n
+type.rel.freq
+round(type.rel.freq,2)*100
+barplot(type.rel.freq, xlab="Type",ylab="Relative Frequency", main="Rel. Frequency bar graph of type")
+mean(Pima.tr$npreg)
+median(Pima.tr$bmi)
+quantile(Pima.tr$bmi, probs=c(0.1,0.25,0.50,0.9))
+summary(Pima.tr$bmi)
+boxplot(Pima.tr$bmi, ylab="BMI")
+boxplot(Pima.tr$bmi, ylab="BMI", horizontal=TRUE)
+IQR(Pima.tr$bmi)
+var(Pima.tr$bmi)
+sd(Pima.tr$bmi)
