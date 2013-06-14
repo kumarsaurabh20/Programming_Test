@@ -4,7 +4,7 @@ data(bodyfat)
 head(bodyfat)
 plot(bodyfat$abdomen, bodyfat$siri, xlab="Abdomen", ylab="Percent body fat", pch=21)
 abline(lm(mpg~wt), col="red")
-lines(lowess(bodyfat$abdomen, bodyfat$siri), col="red", lwd="3)
+lines(lowess(bodyfat$abdomen, bodyfat$siri), col="red", lwd="3")
 library(car)
 scatterplot(mpg ~ wt | cyl, data=mtcars, xlab="Weight of Car", ylab="Miles Per Gallon",
 main="Enhanced Scatter Plot", labels=row.names(mtcars)) 
