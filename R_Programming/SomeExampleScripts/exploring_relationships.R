@@ -118,7 +118,7 @@ library(Rcmdr)
 attach(mtcars)
 scatter3d(wt, disp, mpg) 
 
-
+#=================================================================================
 #=================================================================================
 
 #To quantify the directiona nd strength of a linear relationshis between 2 numerical 
