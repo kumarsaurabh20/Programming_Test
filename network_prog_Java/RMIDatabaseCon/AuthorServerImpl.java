@@ -33,7 +33,7 @@ public class AuthorServerImpl extends UnicastRemoteObject implements AuthorServe
 			
 			Class.forName(""); //insert your driver name
 			con = DriverManager.getConnection(""); //insert your conn url
-			stat = con.prepareStatement(str);
+			stat = con.prepareStatement(str); //shoot query to the database
 			stat.setInt(1, p_id);
 			stat.setString(2, description);
 			stat.setString(3, quantity);
