@@ -22,7 +22,7 @@ public class ChatClient extends JFrame implements ActionListener, ClientRemote {
 	private static String name;
 	int i=0;
 	
-	//Define the chat client constructor
+	//Define the chat client constructor and GUI attributes
 	
 	public ChatClient() {
 		
