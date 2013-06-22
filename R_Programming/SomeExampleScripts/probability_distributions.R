@@ -1,3 +1,5 @@
+#================================================================================
+#================================================================================
 #Binomial distribution: assume that we want to examine 10 people for a disease that 
 #has a probability of 0.2 in the population of interest. The number of people
 #(out of 10) who are affected denoted as Y, has Binomial(10,0.2) distribution. 
