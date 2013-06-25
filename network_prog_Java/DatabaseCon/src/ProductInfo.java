@@ -120,6 +120,8 @@ public class ProductInfo extends JFrame implements ActionListener
 		
 		setResizable(false);	
 		
+                //set driver and connection object
+
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
