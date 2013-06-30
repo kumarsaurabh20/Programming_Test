@@ -1,5 +1,5 @@
 UniVarLinReg <- function(file, alpha, num_iters) {
-  
+ 
 file <- as.character(file)
 alpha <- as.numeric(alpha)
 num_iters <- as.numeric(num_iters)
@@ -33,7 +33,7 @@ plot(x, y)
       
       histSEF <- rep(0, each=num_iters)
       #histSEF <- t(t(histSEF))
-      thetaHistory <- rep(0, each=num_iters)
+      #thetaHistory <- rep(0, each=num_iters)
       
       for(iter in 1:num_iters) {
         
@@ -50,8 +50,9 @@ plot(x, y)
       #print(theta)   
       
       histSEF[iter] <- computeLineOfFit(mX,y,theta)   
-      thetaHistory[iter] <- theta
-      plot(thetaHistory, histSEF)  
+      #thetaHistory[iter] <- theta
+        
+      plot(1:num_iters, histSEF, xlab="Number of Iterations", ylab="Minimized Squared error function", main="Gradient Descent Check")  
         
       }
       
