@@ -26,7 +26,6 @@ spottypes <- readSpotTypes()
 coralRG$genes$Status <- controlStatus(spottypes, coralRG)
 x11(width=7.5, height=11)
 xplot(data = coralRG$R, layout = coralRG$printer, FUN=imageplot)
-
 imageplot(log2(coralRG$Rb[, 3]+1), layout = coralRG$printer,low="white", high="red")
 imageplot(log2(coralRG$Rb[, 4]+1), layout = coralRG$printer,low="white", high="red")
 imageplot(log2(coralRG$Rb[, 5]+1), layout = coralRG$printer,low="white", high="red")
@@ -39,7 +38,6 @@ plotMA(coralRG, array=3)
 plotMA(coralRG, array=4)
 plotMA(coralRG, array=5)
 plotMA(coralRG, array=6)
-
 rawMA <- normalizeWithinArrays(coralRG, method = "none")
 plotPrintTipLoess(rawMA, array=1)
 plotPrintTipLoess(rawMA, array=2)
@@ -57,4 +55,3 @@ deM <- nMA$M[wanted, ]
 pairs(rawdeM) 
 pairs(rawdeM) 
 imgplot(coralRG$R[, 1], layout = coralRG$printer)
-
