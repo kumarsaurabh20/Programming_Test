@@ -1,3 +1,4 @@
+#not finished..
 data <- read.csv("newMultiData.txt")
 y1 <- as.numeric(data$Y1)
 y2 <- as.numeric(data$Y2)
