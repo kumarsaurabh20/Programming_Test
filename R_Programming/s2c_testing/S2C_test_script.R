@@ -3,7 +3,7 @@ UniVarLinReg <- function(file, alpha, num_iters) {
 file <- as.character(file)
 alpha <- as.numeric(alpha)
 num_iters <- as.numeric(num_iters)
-calibData <- read.csv(file)
+calibData <- read.table(file)
 x <- as.numeric(calibData$X)
 y <- as.numeric(calibData$Y)
 numOfRows <- length(y)
@@ -56,12 +56,18 @@ histSEF <- rep(0, each=num_iters)
 }
 
 #Run the script as below to retrieve the values
-a <- UniVarLinReg("array_for_R.txt", 0.01,150)
-b <- unlist(a)
-b[1]
-b[2]
-b[3]
-...
+#a <- UniVarLinReg("array_for_R.txt", 0.01,150)
+#b <- unlist(a)
+#b[1]
+#b[2]
+#b[3]
+#...
+#require(graphics)
+#plot(cars)
+#(z <- line(cars))
+#abline(coef(z))
+## Tukey-Anscombe Plot :
+#plot(residuals(z) ~ fitted(z), main = deparse(z$call))
 
 
 
