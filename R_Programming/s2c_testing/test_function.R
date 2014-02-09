@@ -1,3 +1,12 @@
+#Function getFitCoefs: 
+#take inputs from calibration data, uploaded by the user and returns a matrix of sleected probe names and their linear
+# regression coefficients. 
+#Author: Kumar Saurabh Singh
+#Date: 14 March 2014
+
+#######################################################################################################
+
+
 getFitCoefs <- function(probe, columns, cells) {
 
 norm.val <- matrix(0, length(probe), ncol(columns) - 1)
