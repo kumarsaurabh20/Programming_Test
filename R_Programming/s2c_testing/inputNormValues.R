@@ -1,3 +1,12 @@
+#Function getIntNormValues: 
+#takes raw intensities from the input file and depending on the selected probe, it will normalize the raw intesities
+# and return a matrix with columns carrying probe names and normalized values for prediction 
+#Author: Kumar Saurabh Singh
+#Date: 14 March 2014
+
+#######################################################################################################
+
+
 getIntNormValues <- function(probe, columns) {
 
   #create empty matrix to carry control probe intensity.
