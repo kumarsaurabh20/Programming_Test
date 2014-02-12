@@ -1,3 +1,12 @@
+#Function getPrediction: 
+#function accepts two matrix, one is coefficients and other is normalized values of raw intensities.
+#it returns a vector of cell counts.
+#Author: Kumar Saurabh Singh
+#Date: 14 March 2014
+
+#######################################################################################################
+
+
 getPrediction <- function(results, results2) {
      
 match.probes <- match(results2[,1], results[,1])
@@ -13,19 +22,4 @@ cell.counts <- vector()
 for (i in c(1:nrow(results2.filter))) { cell.counts[i] <- sum(new.metrix[i,])}
 
 return(cell.counts)
-}
-
-
-selectProbeFromList <- function(results, results2) {
-
-commonProbesInTwoResults <- intersect(results[,1], results2[,1])
-
-selectedProbesFromGpr <- matrix(0, length(commonProbesInTwoResults), ncol(results2))
-  
-  for (i in c(1:length(commonProbesInTwoResults))) {
-  selectedProbesFromGpr[i,] <- subset(results2, commonProbesInTwoResults[i] == results2[ , 1])
-  }
-
-return(selectedProbesFromGpr[,-1])
-
 }
