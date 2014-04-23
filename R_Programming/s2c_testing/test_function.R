@@ -1,32 +1,3 @@
-#make a new table with the cell count and different probe normalization and calculate for individual probes. Need to create two functions. One which takes the two tables with cell count data enveloping a function for calculating multiple linear regression taking indidual rows from two tables, making a new table along with cells data and the performing regression and returning theta values/reression equation.
-
-#take transpose of two tables
-
-#cell count data
-
-#created a list having different data frames for individual probes. Now just put each member of the list to a lm() function and returned theta values must be put in the equation and multiply and get the actual cell count.
-
-#finally return a data.frame with probe names and cell counts
-
-
-calCellCount <- function(probe, columns, cells, probeList, intValues) {
-
-     predictValues <- cbind(probeList, intValues)
-     listModels <- getFitCoefs(probe, columns, cells)
-
-     apply(predictValues, 2, function(x) {
-           for(i in c(1:nrow(tab1))) {
-              if (x[i] == tab2[i,1]) {print(x[i]); next;} 
-              }
-           })
-
-
-
-
-}
-
-
-
 getFitCoefs <- function(probe, columns, cells) {
 
 norm.val <- matrix(0, length(probe), ncol(columns) - 1)
@@ -43,27 +14,83 @@ col.name <- col.name[-1]
   col <- ncol(column.filter)
   row <- nrow(column.filter)
   tab.norm.1 <- matrix(0, row,col)
+  t.tab.norm.1 <- matrix(0, col,row)
   tab.norm.2 <- matrix(0, row,col)
+  t.tab.norm.2 <- matrix(0, col,row)
   tab.norm.3 <- matrix(0, row,col)
+  t.tab.norm.3 <- matrix(0, col,row)
   tab.norm.4 <- matrix(0, row,col)
+  t.tab.norm.4 <- matrix(0, col,row)
   tab.norm.5 <- matrix(0, row,col)
-  tab.norm.5 <- matrix(0, row,col)
+  t.tab.norm.5 <- matrix(0, col,row)
+  tab.norm.6 <- matrix(0, row,col)
+  t.tab.norm.6 <- matrix(0, col,row)
+  myData <- list()
 
-  for(i in c(1:ncol(norm.val))) {tab.norm.1[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[1,i])}))}
-  for(i in c(1:ncol(norm.val))) {tab.norm.2[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[2,i])}))}
+
+ if (length(probe) > 1) {
+	for(i in c(1:ncol(norm.val))) {tab.norm.1[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[1,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.2[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[2,i])}))}
+t.tab.norm.1 <- t(tab.norm.1)
+t.tab.norm.2 <- t(tab.norm.2)
+for (i in c(1:ncol(t.tab.norm.1))) {myData[[i]] <- cbind(cells, t.tab.norm.1[,i], t.tab.norm.2[,i])}
+} else if (length(probe) > 2) {
+	for(i in c(1:ncol(norm.val))) {tab.norm.1[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[1,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.2[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[2,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.3[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[3,i])}))}
+t.tab.norm.1 <- t(tab.norm.1)
+t.tab.norm.2 <- t(tab.norm.2)
+t.tab.norm.3 <- t(tab.norm.3)
+for (i in c(1:ncol(t.tab.norm.1))) {myData[[i]] <- cbind(cells, t.tab.norm.1[,i], t.tab.norm.2[,i], t.tab.norm.3[,i])}
+} else if (length(probe) > 3) {
+	for(i in c(1:ncol(norm.val))) {tab.norm.1[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[1,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.2[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[2,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.3[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[3,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.4[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[4,i])}))}
+t.tab.norm.1 <- t(tab.norm.1)
+t.tab.norm.2 <- t(tab.norm.2)
+t.tab.norm.3 <- t(tab.norm.3)
+t.tab.norm.4 <- t(tab.norm.4)
+for (i in c(1:ncol(t.tab.norm.1))) {myData[[i]] <- cbind(cells, t.tab.norm.1[,i], t.tab.norm.2[,i], t.tab.norm.3[,i], t.tab.norm.4[,i])}
+} else if (length(probe) > 4) {
+	for(i in c(1:ncol(norm.val))) {tab.norm.1[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[1,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.2[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[2,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.3[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[3,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.4[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[4,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.5[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[5,i])}))}
+t.tab.norm.1 <- t(tab.norm.1)
+t.tab.norm.2 <- t(tab.norm.2)
+t.tab.norm.3 <- t(tab.norm.3)
+t.tab.norm.4 <- t(tab.norm.4)
+t.tab.norm.5 <- t(tab.norm.5)
+for (i in c(1:ncol(t.tab.norm.1))) {myData[[i]] <- cbind(cells, t.tab.norm.1[,i], t.tab.norm.2[,i], t.tab.norm.3[,i], t.tab.norm.4[,i], t.tab.norm.5[,i])}
+} else if (length(probe) > 5) {
+	for(i in c(1:ncol(norm.val))) {tab.norm.1[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[1,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.2[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[2,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.3[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[3,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.4[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[4,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.5[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[5,i])}))}
+	for(i in c(1:ncol(norm.val))) {tab.norm.6[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[6,i])}))}
+t.tab.norm.1 <- t(tab.norm.1)
+t.tab.norm.2 <- t(tab.norm.2)
+t.tab.norm.3 <- t(tab.norm.3)
+t.tab.norm.4 <- t(tab.norm.4)
+t.tab.norm.5 <- t(tab.norm.5)
+t.tab.norm.6 <- t(tab.norm.6)
+for (i in c(1:ncol(t.tab.norm.1))) {myData[[i]] <- cbind(cells, t.tab.norm.1[,i], t.tab.norm.2[,i], t.tab.norm.3[,i], t.tab.norm.4[,i], t.tab.norm.5[,i], t.tab.norm.5[,i])}
+} else {for(i in c(1:ncol(norm.val))) {tab.norm.2[,i] <- unlist(lapply(as.numeric(column.filter[,i]), function(x) {x/as.numeric(norm.val[1,i])}))}
+t.tab.norm.1 <- t(tab.norm.1)
+for (i in c(1:ncol(t.tab.norm.1))) {myData[[i]] <- cbind(cells, t.tab.norm.1[,i])}
+}
   
- t.tab.norm.1 <- t(tab.norm.1)
- t.tab.norm.2 <- t(tab.norm.2)
-
-
- myData <- list()
- for (i in c(1:ncol(t.tab.norm.1))) {myData[[i]] <- cbind(cells, t.tab.norm.1[,i], t.tab.norm.2[,i])}
-
  calLinMod <- function(x) {
             x <- as.matrix(x)
+            if (ncol(x) == 2) {fit <- lm(x[,1] ~ x[,2])}
             if (ncol(x) == 3) {fit <- lm(x[,1] ~ x[,2] + x[,3])}
             if (ncol(x) == 4) {fit <- lm(x[,1] ~ x[,2] + x[,3] + x[,4])}
             if (ncol(x) == 5) {fit <- lm(x[,1] ~ x[,2] + x[,3] + x[,4] + x[,5])}
+            if (ncol(x) == 6) {fit <- lm(x[,1] ~ x[,2] + x[,3] + x[,4] + x[,5] + x[,6])}
+            if (ncol(x) == 7) {fit <- lm(x[,1] ~ x[,2] + x[,3] + x[,4] + x[,5] + x[,6] + x[,7])}
             return(as.numeric(coef(fit)))
        }
 
@@ -75,5 +102,43 @@ col.name <- col.name[-1]
 
  return(result.matrix)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
